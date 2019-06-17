@@ -108,7 +108,7 @@ $result = mysql_query($query);
         <div class="container">
           <div class="pull-right hidden-xs">
           </div>
-          <strong>Copyright &copy; <a href="#"> CV. Witra</a></strong>
+          <strong>Copyright &copy; <a href="#">Lelang Indah</a></strong>
         </div><!-- /.container -->
       </footer>
     </div>
