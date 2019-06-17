@@ -46,6 +46,7 @@ elseif($_POST['comentar']!=NULL && $_POST['id_user']!=NULL){
     $id_user=$_POST['id_user'];
     $comentar = $_POST['comentar'];
     comentar($id_iklan, $id_user, $comentar);
+    updateBid($id_iklan, $id_user, $comentar);
     // notifikasi untuk yang memposting iklan
     $admin = "SELECT * FROM iklan WHERE id_iklan='$id_iklan'";
     $res_admin = mysql_query($admin);
@@ -111,6 +112,11 @@ function comentar($id_iklan,$id_user,$message){
     $query = "INSERT INTO `komentar` 
                        (`id_komentar`, `id_iklan`, `id_user`, `isi_komentar`,`waktu_komentar`, `jam`)
                 VALUES (NULL, '$id_iklan', '$id_user', '$message','".tgl()."', '".jam()."');";
+    mysql_query($query);
+}
+function updateBid($id_iklan, $id_user, $bid){
+    $query = "INSERT INTO `lelang`(`id_lelang`,`id_user`, `id_iklan`, `harga`, `ikhtisar`, `status_menang`, `time_bid`, `jam`)
+                VALUES (NULL,'$id_user', '$id_iklan', '$bid',NULL,'0', '".tgl()."', '".jam()."');";
     mysql_query($query);
 }
 function insert_notif($id_user,$id_iklan){

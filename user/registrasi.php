@@ -74,7 +74,7 @@
                 $bank=$_POST['rekening-bank'];
                 $hold=$_POST['rekening-holder'];
                 $uname=$_POST['username'];
-                $pass=md5($_POST['passw']);
+                $pass=$_POST['passw'];
                 if(getUserId($uname)>0){
                     ?>
                     <div class="pad margin no-print">

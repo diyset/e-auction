@@ -1,3 +1,5 @@
+
+      
       <header class="main-header">
         <nav class="navbar navbar-static-top">
           <div class="container">
@@ -6,13 +8,13 @@
                 <i class="fa fa-bars"></i>
               </button>
                     <a class="navbar-brand" rel="home" href="index.php" >
-                        <img style="max-width:90px; margin-top: -20px;" src="../include/img/witra.png">
+                        <img style="max-width:60px; margin-top: -20px;" src="../include/img/logo.jpg">
                     </a>                
             </div>
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
                   <li class="dropdown">
-                      <a href="#" class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown">  USER <span class="caret"></span></a>
+                      <a href="#" class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown"> USER <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="edit_user.php" class="fa   fa-file">  Ubah Data</a></li>
                           <li><a href="updpass.php" class="fa  fa-lock">  Ubah Password</a></li>
@@ -100,3 +102,4 @@
           </div>
         </nav>
       </header>
+    

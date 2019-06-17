@@ -2,7 +2,7 @@
 error_reporting(0);
 function koneksi(){
 	$koneksi = mysqli_connect("localhost","root","");
-	mysqli_select_db($koneksi,"lelangdian");
+	mysqli_select_db($koneksi,"lelangindah");
 	if(!$koneksi){
     die("could not connect ".mysqli_error($koneksi));
   }

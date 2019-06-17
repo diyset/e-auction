@@ -34,17 +34,24 @@
                     </div><!-- /.box-header -->
                     <div class='box-body'>                        
                         <?php echo $row['isi_iklan']; ?>
-                        
+                        <br>
+                        <?php echo "Rp.".$row['harga_lelang']; ?>
+                        <br>
+                        <img class='img-thumbnail' src='../file/<?php echo $row['file_iklan']; ?>' alt='deskripsi barang'>
                         <br>
                         <br>
-                        <a href="../file/<?php echo $row['file_iklan']; ?>" class="btn btn-md btn-info pull-left">Download Lampiran</a>
                         <a href="ikut_lelang.php?id_iklan=<?php echo $row['id_iklan']; ?>" class="btn btn-md btn-info pull-right">Ikut Lelang</a>
                     </div>
                     
                     <?php
                     $que = "SELECT * FROM  `komentar` WHERE id_iklan ='".$row['id_iklan']."' ORDER BY id_komentar ASC ";
                     $res =  mysql_query($que);
-                    while ($ro = mysql_fetch_array($res)) {
+                    $queryBid = "SELECT id_lelang, id_user, id_iklan, MAX(harga) as harga, time_bid, MAX(jam) as jam FROM `lelang` WHERE id_iklan = '".$row['id_iklan']."' GROUP BY id_user ORDER BY harga DESC";
+                    $queryFirstBid = "SELECT MAX(harga) as harga FROM `lelang` WHERE id_iklan = '".$row['id_iklan']."' LIMIT 1";
+                    $resBid = mysql_query($queryBid);
+                    $firstBid = mysql_query($queryFirstBid);
+                    $firstElement = mysql_fetch_array($firstBid);
+                    while ($ro = mysql_fetch_array($resBid)) {
                     ?>
 
                     <div class='box-footer box-comments'>
@@ -56,9 +63,9 @@
                             $nama = mysql_fetch_array(mysql_query("SELECT * FROM `user` WHERE id_user='".$ro['id_user']."'"));
                             echo $nama['nama'];
                             ?>
-                            <span class='text-muted pull-right'><?php echo $ro['jam']; ?></span>
+                            <span class='text-muted pull-right'><?php echo $ro['time_bid']." ".$ro['jam']; ?></span>
                           </span>
-                            <?php echo $ro['isi_komentar']; ?>
+                            <?php echo "Rp.".number_format($ro['harga']); ?>
                         </div><!-- /.comment-text -->
                       </div>
                     </div>
@@ -68,7 +75,7 @@
                     <div class="box-footer">
                         <form action="ajax.php" method="POST">
                             <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" name="comentar">
+                                <input type="text" class="form-control" name="comentar" value="<?php echo $firstElement['harga'] + 10000;?>">
                                 <input type="hidden" name='id_user' value="<?php echo $id_user; ?>">
                                 <input type="hidden" name='id_iklan' value="<?php echo $row['id_iklan']; ?>">
                                 <span class="input-group-btn">

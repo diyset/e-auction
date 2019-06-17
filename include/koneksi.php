@@ -3,7 +3,7 @@ function con_db(){
   $host = "localhost";
   $db_user = "root";
   $db_pwd = "";
-  $db_name = "lelangdian";
+  $db_name = "lelangindah";
   $con = mysql_connect($host,$db_user,$db_pwd);
   if($con){
       // konek ke host

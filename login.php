@@ -33,7 +33,7 @@ con_db();
         <?php
         if(isset($_POST['submit'])){
             $name = $_POST['username'];
-            $pwd = md5($_POST['password']);
+            $pwd = $_POST['password'];
             $query = "SELECT * FROM user WHERE username='$name' AND password='$pwd'";
             $result = mysql_query($query);
             $hasil = mysql_num_rows($result);
