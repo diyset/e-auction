@@ -4,6 +4,8 @@ error_reporting(0);
 if($_SESSION['status']=="login"){
     if($_SESSION['hak_akses']=="admin"){
         header("location:admin/");
+    } else if($_SESSION['hak_akses'] == "supplier"){
+      header("location:supplier/");
     }
     else{
         header("location:user/");
@@ -46,12 +48,18 @@ con_db();
                     $_SESSION['id_user']=$row['id_user'];
                     header("location:admin/");
                 }
-                elseif($row['hak_akses']==0){
-                    $_SESSION['status']="login";
-                    $_SESSION['hak_akses']="user";
-                    $_SESSION['username']=$row['username'];
-                    $_SESSION['id_user']=$row['id_user'];
-                    header("location:user/");            
+                elseif($row['hak_akses']==0 && $row['hak_supplier'] == 1){
+                  $_SESSION['status']="login";
+                  $_SESSION['hak_akses']="supplier";
+                  $_SESSION['username']=$row['username'];
+                  $_SESSION['id_user']=$row['id_user'];
+                  header("location:supplier/");
+                } elseif($row['hak_akses'] == 0) {
+                  $_SESSION['status']="login";
+                  $_SESSION['hak_akses']="user";
+                  $_SESSION['username']=$row['username'];
+                  $_SESSION['id_user']=$row['id_user'];
+                  header("location:user/");            
                 }
             }
             else{ 

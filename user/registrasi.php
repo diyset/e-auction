@@ -66,6 +66,15 @@
           </section>
             <?php
             include "function.php";
+            if(!isset($_POST['mychk'])){ 
+              ?>
+            <div class="pad margin no-print">
+              <div class="callout callout-danger" style="margin-bottom: 0!important;">
+                <h4></i>info :</h4>
+                Ceklis syarat persetujuan terlebih dahulu!!
+              </div>
+            </div>
+         <?php } 
             if(isset($_POST['submit'])){
                 $nama=$_POST['nama'];
                 $nohp=$_POST['nohp'];
@@ -79,7 +88,7 @@
                     ?>
                     <div class="pad margin no-print">
                       <div class="callout callout-danger" style="margin-bottom: 0!important;">
-                        <h4><i class="fa fa-info"></i>nfo :</h4>
+                        <h4><i class="fa fa-info"></i>info :</h4>
                         Username Sudah Terdaftar !
                       </div>
                     </div>
@@ -161,6 +170,9 @@
                       <div class="form-group">
                         <label for="passw">Password</label>
                         <input type="password" class="form-control" name="passw" size="35" placeholder="Password" />
+                      </div>
+                      <div class="form-group">
+                        <input type="checkbox" name="mychk" value="Setuju" /> I agree to Terms of Use and Privacy Policy
                       </div>
                       <div class="form-group">
                         <input type="submit" name="submit" value="Register" class="btn btn-md btn-info">

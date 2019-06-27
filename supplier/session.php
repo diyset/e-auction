@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION['status']=="login"){
-    if($_SESSION['hak_akses']!="admin"){
+    if($_SESSION['hak_akses']!="supplier"){
         header("location:../user");
     }
 }
